@@ -38,7 +38,7 @@
                 <tbody>
                     <#list coursesList as item>
                     <tr>
-                        <th scope="row">1</th>
+                        <th scope="row">${item.ID}</th>
                         <th >${item.name}</th>
                         <td>${item.description}</td>
 
