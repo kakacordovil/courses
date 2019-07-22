@@ -12,13 +12,13 @@ import java.util.List;
 public class CoursesAdsService {
    public List<Course> course;
 
-    public CoursesAdsService() {
-        course = new ArrayList<>();
+   // public CoursesAdsService() {
+       // course = new ArrayList<>();
 
-        Course courseList = new Course();
-        courseList.setDescription("Descrição");
-        courseList.setName("curso1");
-        course.add(courseList);
+      //  Course courseList = new Course();
+      //  courseList.setDescription("Descrição");
+      //  courseList.setName("curso1");
+      //  course.add(courseList);
 
-    }
+   // }
 }

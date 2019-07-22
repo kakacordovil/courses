@@ -6,18 +6,28 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.Arrays;
+import java.util.*;
 
 @Controller
 public class CoursesAdsController {
 
-    @Autowired
-    private CoursesAdsService service;
+    Set<Course> persistedCouses = new HashSet<>();
+
+    @GetMapping("/")
+    public String newCourse(){
+        return "courses";
+    }
+
 
     @GetMapping("/courses")
     public String newCourses(Model model) {
-        model.addAttribute("courses", service.getCourse());
+
+//        List<Course> course = new ArrayList<>();
+//        course.add(new Course ("java","java SE"));
+//        course.add(new Course ("php","php"));
+        model.addAttribute("coursesList", persistedCouses);
 
         return "courses";
     }
+
 }
