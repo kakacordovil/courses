@@ -42,6 +42,10 @@
                         <th >${item.name}</th>
                         <td>${item.description}</td>
 
+                        <a href="/courses/delete/${item.ID}">
+                        <button type="submit" class="btn btn-warning">Delete</button> </td>
+                        </a>
+
                     </tr>
                     </#list>
                 </tbody>

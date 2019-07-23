@@ -41,4 +41,29 @@ public class CoursesAdsController {
     }
 
 
+
+    @GetMapping("/courses/delete/{id}")
+    public ModelAndView delete(@PathVariable("id") int courseID, Model model) {
+
+        System.out.println("courseId");
+        deleteCourse(courseID);
+        model.addAttribute("cursoespetacular", persistedCourses);
+        return new ModelAndView("redirect:/courses");
+
+    }
+
+    private void deleteCourse(int courseID){
+        for (Course c : persistedCourses) {
+            if (c.getID() == courseID) {
+                persistedCourses.remove(c);
+
+            }
+
+        }
+
+    }
+
+
+
+
 }
