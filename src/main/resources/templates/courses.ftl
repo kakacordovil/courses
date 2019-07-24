@@ -39,12 +39,25 @@
                     <#list coursesList as item>
                     <tr>
                         <th scope="row">${item.ID}</th>
+
                         <th >${item.name}</th>
+
                         <td>${item.description}</td>
 
-                        <a href="/courses/delete/${item.ID}">
+                        <a href="/courses/editCourse/${item.ID}">
                         <button type="submit" class="btn btn-warning">Delete</button> </td>
                         </a>
+
+                         <th scope="row">${item.ID}</th>
+
+                         <th >${item.name}</th>
+
+                         <td>${item.description}</td>
+
+                        <a href="/courses/editCourse/${item.ID}">
+                        <button type="submit" class="btn btn-warning">Edit</button> </td>
+                        </a>
+
 
                     </tr>
                     </#list>

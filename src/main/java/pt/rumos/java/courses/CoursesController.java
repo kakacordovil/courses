@@ -3,7 +3,6 @@ package pt.rumos.java.courses;
 
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,10 +12,13 @@ import java.util.*;
 
 @Controller
 @Data
-public class CoursesAdsController {
+public class CoursesController {
 
     static int ID = 1;
     static List<Course> persistedCourses = new ArrayList<>();
+
+    @Autowired
+    private CoursesService service;
 
     @GetMapping("/")
     public String newCourse(){
@@ -42,12 +44,12 @@ public class CoursesAdsController {
 
 
 
-    @GetMapping("/courses/delete/{id}")
+    @GetMapping("/courses/editCourse/{id}")
     public ModelAndView delete(@PathVariable("id") int courseID, Model model) {
 
-        System.out.println("courseId");
+        System.out.println("courseID");
         deleteCourse(courseID);
-        model.addAttribute("cursoespetacular", persistedCourses);
+        model.addAttribute("coursesList", persistedCourses);
         return new ModelAndView("redirect:/courses");
 
     }
@@ -56,13 +58,23 @@ public class CoursesAdsController {
         for (Course c : persistedCourses) {
             if (c.getID() == courseID) {
                 persistedCourses.remove(c);
-
             }
-
         }
-
     }
 
+
+    @PutMapping("/courses/editCourse/{id}")
+    public Course update(@PathVariable("id") int courseID, @RequestBody Course toUpdate) {
+
+        for (Course c : persistedCourses) {
+            if (c.getID() == courseID) {
+                c.setName(toUpdate.getName());
+                c.setDescription(toUpdate.getDescription());
+                return c;
+            }
+        }
+        return toUpdate;
+    }
 
 
 
