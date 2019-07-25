@@ -19,6 +19,7 @@ public class CoursesController {
 
     @Autowired
     private CoursesService service;
+    private Course toUpdate;
 
     @GetMapping("/")
     public String newCourse(){
@@ -64,7 +65,7 @@ public class CoursesController {
 
 
     @PutMapping("/courses/editCourse/{id}")
-    public Course update(@PathVariable("id") int courseID, @RequestBody Course toUpdate) {
+    public Course update(@PathVariable("id") int courseID, Course toUpdate) {
 
         for (Course c : persistedCourses) {
             if (c.getID() == courseID) {
@@ -74,6 +75,7 @@ public class CoursesController {
             }
         }
         return toUpdate;
+
     }
 
 
