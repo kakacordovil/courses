@@ -26,6 +26,7 @@
                 <button type="submit" class="btn btn-primary">Add</button>
             </form>
             <br/>
+
             <table class="table">
                 <thead>
                     <tr>
@@ -36,6 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
+                <div>
                     <#list coursesList as item>
                     <tr>
                         <th scope="row">${item.ID}</th>
@@ -44,17 +46,19 @@
 
                         <td>${item.description}</td>
 
+                        <td>
                         <a href="/courses/editCourse/${item.ID}">
                         <button type="submit" class="btn btn-warning">Delete</button> </td>
                         </a>
 
+                        <td>
                         <a href="/courses/editCourse/${item.ID}">
-                        <button type="submit" class="btn btn-warning">Edit</button> </td>
+                        <button type="button" class="btn btn-warning">Edit</button> </td>
                         </a>
 
                     </tr>
                     </#list>
-
+                </div>
 
                 </tbody>
             </table>
